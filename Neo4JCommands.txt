@@ -1,0 +1,42 @@
+// cheat sheet
+https://memgraph.com/blog/cypher-cheat-sheet
+
+// Get all nodes and relationships
+MATCH (n) RETURN n LIMIT __
+
+// create contract
+CREATE (:Contract {title: 'The Ape List Official', symbol: 'TAL', address: '0x2f07ab5e3f349a4803a3805049ed57ce26302cb5', totalSupply: '4276'})
+
+// create wallet
+CREATE (:Wallet {address: '0xE9AF6D5309Dfc433eA5eA0d1EA610B7448f2185d'})
+
+// add a relationship, but don't duplicate
+MATCH (w), (c) WHERE w.address = "0xE9AF6D5309Dfc433eA5eA0d1EA610B7448f2185d" AND c.address= "0x2f07ab5e3f349a4803a3805049ed57ce26302cb5" MERGE (w)-[:OWNS]->(c);
+
+
+match (n)--() with n,count(*) as rel_cnt where rel_cnt < 100 return n;
+
+MATCH (w), (c) WHERE c.name <> '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+RETURN w, c
+
+// get all wallets and address EXCEPT the specified one
+// FYI: <> means != in cypher
+MATCH (w:Wallet)-[:OWNS]-(c:Contract)
+WHERE c.address <> '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+RETURN w, c;
+
+MATCH (w:Wallet)-[:OWNS]-(c:Contract)
+WHERE c.address = '0x7d12ef97d1536b07B86Ec03Ebcc4f87C132486CC'
+RETURN w, c;
+
+
+
+MATCH (w:Wallet)-[r:OWNS]->(c:Contract)
+WITH w, c, count(DISTINCT r) as owner_count
+WHERE owner_count < 100
+RETURN w, c
+
+MATCH ()-[r]->(n)
+WITH n, count(r) as rel_cnt
+WHERE rel_cnt < 100
+RETURN n;
