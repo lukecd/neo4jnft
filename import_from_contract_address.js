@@ -119,21 +119,21 @@ async function main() {
 
 	// Alchemy config ETH
 	const alchemySettingsETH = {
-		apiKey: "bVfG0dkk7__qFgTBG1aeGpY58zuZ7_bE", // Replace with your Alchemy API Key.
+		apiKey: "", // Replace with your Alchemy API Key.
 		network: Network.ETH_MAINNET, // Replace with your network identifier
 	};
 
 	// Alchemy config Polygon
 	const alchemySettingsPolygon = {
-		apiKey: "0nnnXF5dcax3pa7bmCEZR0xy97lC4CoP", // Replace with your Alchemy API Key.
+		apiKey: "", // Replace with your Alchemy API Key.
 		network: Network.MATIC_MAINNET, // Replace with your network identifier
 	};
 
 	// Neo4J Config
 	const neo4JSettings = {
-		uri: "neo4j+s://2fce13e9.databases.neo4j.io", // Replace with your Neo4j URI
+		uri: "", // Replace with your Neo4j URI
 		user: "neo4j", // Replace with your Neo4j user
-		password: "L8K5K8_CFmi3HKqvpvwhxUUmCjvjSLmRlKrG3B8PMDU", // Replace with your Neo4j password
+		password: "", // Replace with your Neo4j password
 	};
 
 	// Neo4J Driver
